@@ -19,4 +19,4 @@ spec:
       - name: nginx-demo
         image: nginx:1.16.0 
         ports:
-        - containerport: 80
+        - containerPort: 80
