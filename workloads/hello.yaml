@@ -17,6 +17,8 @@ spec:
   selector:
     matchLabels:
       app: docker-nodejs-demo
+  replicas: 1
+  selector:
   template:
     metadata:
       labels:
