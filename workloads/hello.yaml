@@ -1,24 +1,31 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-demo
+  name: docker-nodejs-demo
   namespace: demo
   labels:
-    app: nginx-demo 
+    app: docker-nodejs-demo
   annotations:
     fluxcd.io/automated: "true"
+    fluxcd.io/tag.docker-nodejs-demo: semver:~1.0.0
 spec:
-  replicas: 1 
+  strategy:
+    rollingUpdate:
+      maxUnavailable: 0
+    type: RollingUpdate
   selector:
     matchLabels:
-      app: nginx-demo 
+      app: docker-nodejs-demo
   template:
     metadata:
       labels:
-        app: nginx-demo
+        app: docker-nodejs-demo
     spec:
       containers:
-      - name: nginx-demo
-        image: nginx:1.16.0 
+      - name: docker-nodejs-demo
+        image: wardviaene/docker-nodejs-demo:1.0.2
         ports:
-        - containerPort: 80
+        - name: nodejs-port
+          containerPort: 3000
+
