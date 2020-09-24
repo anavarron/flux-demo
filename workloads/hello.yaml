@@ -5,8 +5,10 @@ metadata:
   namespace: demo
   labels:
     app: nginx-demo 
+  annotations:
+    fluxcd.io/automated: "true"
 spec:
-  replicas: 2
+  replicas: 1 
   selector:
     matchLabels:
       app: nginx-demo 
