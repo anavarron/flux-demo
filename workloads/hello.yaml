@@ -1,17 +1,18 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nginx-demo
   namespace: demo
   labels:
-    app: nginx-demo 
+    app: nginx-demo
   annotations:
     fluxcd.io/automated: "true"
 spec:
-  replicas: 1 
+  replicas: 1
   selector:
     matchLabels:
-      app: nginx-demo 
+      app: nginx-demo
   template:
     metadata:
       labels:
@@ -19,6 +20,6 @@ spec:
     spec:
       containers:
       - name: nginx-demo
-        image: nginx:1.16.0 
+        image: nginx:1.18-perl
         ports:
         - containerPort: 80
